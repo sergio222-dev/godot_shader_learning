@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3m0jy5tfixde"]
+[gd_scene load_steps=20 format=3 uid="uid://d3m0jy5tfixde"]
 
 [ext_resource type="Shader" path="res://chara.gdshader" id="1_56vb3"]
 [ext_resource type="Texture2D" uid="uid://b4b52jqpjkql8" path="res://Cuervo-export.png" id="2_oe5u3"]
@@ -8,6 +8,9 @@
 [ext_resource type="Shader" path="res://colors/grayscale.gdshader" id="6_hfxg6"]
 [ext_resource type="Shader" path="res://colors/tumblinRushmeier.gdshader" id="7_mhi75"]
 [ext_resource type="Shader" path="res://colors/Schlick.gdshader" id="8_dhrsc"]
+[ext_resource type="Shader" path="res://colors/reinhardE.gdshader" id="9_6wlla"]
+[ext_resource type="Shader" path="res://colors/sergio_color.gdshader" id="10_e6kv4"]
+[ext_resource type="Texture2D" uid="uid://baw1jvrnjpl37" path="res://sprites/roker-lighthouse-4k.jpg" id="11_iricb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pc4vb"]
 shader = ExtResource("1_56vb3")
@@ -30,10 +33,10 @@ shader_parameter/s_gamma = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6o3mp"]
 shader = ExtResource("7_mhi75")
-shader_parameter/exposure = 1.2
+shader_parameter/exposure = 1.0
 shader_parameter/s_gamma = true
 shader_parameter/l_max = 10.0
-shader_parameter/c_max = 91.5
+shader_parameter/c_max = 136.0
 shader_parameter/lum_tex = ExtResource("5_1kcg8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ktbe"]
@@ -42,6 +45,19 @@ shader_parameter/exposure = 1.0
 shader_parameter/s_gamma = true
 shader_parameter/p = 1.0
 shader_parameter/q = -0.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3w7t"]
+shader = ExtResource("9_6wlla")
+shader_parameter/exposure = 1.4
+shader_parameter/s_gamma = true
+shader_parameter/c_white = 1.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irgxw"]
+shader = ExtResource("10_e6kv4")
+shader_parameter/d = 0.0
+shader_parameter/brightness = 0.0
+shader_parameter/amp = 0.716
+shader_parameter/s_gamma = false
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
@@ -113,23 +129,36 @@ texture = ExtResource("2_oe5u3")
 [node name="Cuervo" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_e8cxx")
-position = Vector2(294, 275)
+position = Vector2(73, 193)
 texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo2" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_fddpn")
-position = Vector2(355, 276)
+position = Vector2(110, 214)
 texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo3" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_6o3mp")
-position = Vector2(420, 276)
+position = Vector2(74, 240)
 texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo4" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3ktbe")
-position = Vector2(483, 278)
+position = Vector2(234, 221)
 texture = ExtResource("5_1kcg8")
+
+[node name="Cuervo5" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_u3w7t")
+position = Vector2(135, 241)
+texture = ExtResource("5_1kcg8")
+
+[node name="Roker-lighthouse-4k" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_irgxw")
+position = Vector2(340, 229)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_iricb")

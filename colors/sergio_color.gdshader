@@ -1,28 +1,27 @@
 shader_type canvas_item;
-
-uniform float exposure: hint_range(0.0, 4.0, 0.1) = 1.;
+uniform float d: hint_range(0.0, 1.0, 0.01) = .0;
+uniform float brightness: hint_range(0.0, 1.0, 0.001) = .1;
+uniform float amp: hint_range(0.001, 40.0, 0.001) = .005;
 uniform bool s_gamma = false;
-uniform float c_white: hint_range(-2.0, 10.0, .05) = 1.;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 vec3 luminance(vec3 col) {
-	float d = dot(col, vec3(.299, .587, .114));
-	return vec3(d);
+	float l = dot(col, vec3(.299, .587, .114));
+	return vec3(l);
 }
-
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-		vec4 col = texture(TEXTURE, UV);
+	vec4 col = texture(TEXTURE, UV);
 	
 	if (s_gamma) col = pow(col, vec4(.44));
 	
 	float lin = luminance(col.rgb).r;
 	
-	float lout = (lin * (1.0 + lin / (c_white * c_white))) / (1.0 + lin);
+	float lout = ((d - lin)/(d - lin + 1.)) * amp * - 1. + brightness;
 	
 	col = col / lin * lout;
 	
@@ -31,6 +30,7 @@ void fragment() {
 	if (s_gamma) col = pow(col, vec4(2.2));
 	
 	COLOR.rgb = col.rgb;
+	
 }
 
 //void light() {

@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform float exposure: hint_range(0.0, 4.0, 0.1) = 1.;
 uniform bool s_gamma = false;
 uniform float l_max: hint_range(1.0, 10.0, 10.) = 1.;
-uniform float c_max: hint_range(1.0, 400.0, .5) = 1.;
+uniform float c_max: hint_range(1.0, 400.0, .1) = 1.;
 uniform sampler2D lum_tex: filter_nearest_mipmap;
 
 void vertex() {
