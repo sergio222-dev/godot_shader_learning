@@ -1,25 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://d3m0jy5tfixde"]
+[gd_scene load_steps=16 format=3 uid="uid://d3m0jy5tfixde"]
 
-[ext_resource type="Shader" path="res://chara.gdshader" id="1_56vb3"]
-[ext_resource type="Texture2D" uid="uid://b4b52jqpjkql8" path="res://Cuervo-export.png" id="2_oe5u3"]
-[ext_resource type="Shader" path="res://chara_2.gdshader" id="3_5jq73"]
-[ext_resource type="Texture2D" uid="uid://beafajilocahx" path="res://Cuervo.png" id="5_1kcg8"]
+[ext_resource type="Texture2D" uid="uid://beafajilocahx" path="res://sprites/Cuervo.png" id="5_1kcg8"]
 [ext_resource type="Shader" path="res://colors/sat.gdshader" id="6_4qe6k"]
 [ext_resource type="Shader" path="res://colors/grayscale.gdshader" id="6_hfxg6"]
 [ext_resource type="Shader" path="res://colors/tumblinRushmeier.gdshader" id="7_mhi75"]
+[ext_resource type="Shader" path="res://colors/msaa_study.gdshader" id="8_co7my"]
 [ext_resource type="Shader" path="res://colors/Schlick.gdshader" id="8_dhrsc"]
 [ext_resource type="Shader" path="res://colors/reinhardE.gdshader" id="9_6wlla"]
 [ext_resource type="Shader" path="res://colors/sergio_color.gdshader" id="10_e6kv4"]
-[ext_resource type="Texture2D" uid="uid://baw1jvrnjpl37" path="res://sprites/roker-lighthouse-4k.jpg" id="11_iricb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pc4vb"]
-shader = ExtResource("1_56vb3")
-shader_parameter/SAMPLES = 16
-shader_parameter/WIDTH = 13.0
-shader_parameter/OUTLINE_COLOR = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p888q"]
-shader = ExtResource("3_5jq73")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e8cxx"]
 shader = ExtResource("6_hfxg6")
@@ -36,7 +24,7 @@ shader = ExtResource("7_mhi75")
 shader_parameter/exposure = 1.0
 shader_parameter/s_gamma = true
 shader_parameter/l_max = 10.0
-shader_parameter/c_max = 136.0
+shader_parameter/c_max = 82.2
 shader_parameter/lum_tex = ExtResource("5_1kcg8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ktbe"]
@@ -48,117 +36,70 @@ shader_parameter/q = -0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3w7t"]
 shader = ExtResource("9_6wlla")
-shader_parameter/exposure = 1.4
+shader_parameter/exposure = 0.4
 shader_parameter/s_gamma = true
-shader_parameter/c_white = 1.25
+shader_parameter/c_white = 1.1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_irgxw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubqdx"]
 shader = ExtResource("10_e6kv4")
 shader_parameter/d = 0.0
 shader_parameter/brightness = 0.0
-shader_parameter/amp = 0.716
+shader_parameter/amp = 0.454
 shader_parameter/s_gamma = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkvfm"]
+shader = ExtResource("8_co7my")
+shader_parameter/mx = 1.0
+shader_parameter/k = -1.1
+shader_parameter/max_w = 0.75
+shader_parameter/min_w = 0.03
+shader_parameter/lum_add = 0.33
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 position = Vector2(28, 49)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_right = 1149.0
-offset_bottom = 647.0
-color = Color(0, 0, 0, 1)
-
-[node name="Control" type="Control" parent="ColorRect"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 64.0
-offset_bottom = 64.0
-
-[node name="Cuervo-export" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_pc4vb")
-position = Vector2(311, 208)
-texture = ExtResource("2_oe5u3")
-
-[node name="Cuervo-export-buffer" type="BackBufferCopy" parent="Cuervo-export"]
-use_parent_material = true
-position = Vector2(68.75, 0.25)
-scale = Vector2(1.4425, 1.6375)
-copy_mode = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Cuervo-export/Cuervo-export-buffer"]
-visible = false
-material = SubResource("ShaderMaterial_p888q")
-position = Vector2(-1.21631, -0.92907)
-scale = Vector2(0.772878, 0.685499)
-texture = ExtResource("2_oe5u3")
-
-[node name="Control" type="Control" parent="."]
-visible = false
-custom_minimum_size = Vector2(260, 300)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 664.0
-offset_top = 243.0
-offset_right = 924.0
-offset_bottom = 543.0
-
-[node name="svpc" type="SubViewportContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -59.0
-offset_top = -43.0
-offset_right = 283.0
-offset_bottom = 214.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="Control/svpc"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(322, 332)
-render_target_update_mode = 0
-
-[node name="Sprite2D2" type="Sprite2D" parent="Control/svpc/SubViewport"]
-position = Vector2(136, 161)
-texture = ExtResource("2_oe5u3")
+[node name="Cuervo7" type="Sprite2D" parent="."]
+position = Vector2(137, 192)
+texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_e8cxx")
-position = Vector2(73, 193)
+position = Vector2(64, 193)
 texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo2" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_fddpn")
-position = Vector2(110, 214)
+position = Vector2(98, 219)
 texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo3" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_6o3mp")
-position = Vector2(74, 240)
+position = Vector2(64, 244)
 texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo4" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3ktbe")
-position = Vector2(234, 221)
+position = Vector2(327, 232)
 texture = ExtResource("5_1kcg8")
 
 [node name="Cuervo5" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u3w7t")
-position = Vector2(135, 241)
+position = Vector2(133, 240)
 texture = ExtResource("5_1kcg8")
 
-[node name="Roker-lighthouse-4k" type="Sprite2D" parent="."]
+[node name="Cuervo6" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_irgxw")
-position = Vector2(340, 229)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("11_iricb")
+material = SubResource("ShaderMaterial_ubqdx")
+position = Vector2(94, 270)
+texture = ExtResource("5_1kcg8")
+
+[node name="Cuervo8" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lkvfm")
+position = Vector2(257, 294)
+texture = ExtResource("5_1kcg8")

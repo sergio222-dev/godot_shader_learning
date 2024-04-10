@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beafajilocahx"
-path="res://.godot/imported/Cuervo.png-964260bbfe5b2d82f8d0230fc93664b6.ctex"
+uid="uid://bxdrduu6we1ip"
+path="res://.godot/imported/chara.png-899e26d11577b49f50015d4160530931.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cuervo.png"
-dest_files=["res://.godot/imported/Cuervo.png-964260bbfe5b2d82f8d0230fc93664b6.ctex"]
+source_file="res://sprites/chara.png"
+dest_files=["res://.godot/imported/chara.png-899e26d11577b49f50015d4160530931.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
